@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Assignment</string>
+    <string name="re_step">RE-STEP</string>
+    <string name="forget_your_password">Forget your Password?</string>
+    <string name="profile_update_successfully">Profile update successfully</string>
+    <string name="deactivate_account">Deactivate account</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="healthy_rehab_center">Healthy Rehab Center</string>
+    <string-array name="reason_array">
+        <item>Re-schedule</item>
+        <item>Time does not fit me</item>
+        <item>Change of mind</item>
+        <item>Rehab Centers request to cancel</item>
+        <item>Found better price elsewhere</item>
+        <item>Change payment method</item>
+        <item>Others</item>
+    </string-array>
+
+    <string name="treatment">Treatment</string>
+    <string name="session">Session</string>
+    <string name="Search">Search</string>
+
+</resources>

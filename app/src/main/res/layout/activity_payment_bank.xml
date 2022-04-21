@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:id="@+id/page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:text="Payment"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/paymentmethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/columncolumn"
+            android:layout_margin="@dimen/hintPadding"
+            android:background="@drawable/column_design"
+            android:backgroundTint="@color/theme"
+            android:padding="@dimen/hintPadding"
+            android:textAlignment="center"
+            android:text="Online Banking"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.133"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/page" />
+
+        <TextView
+            android:id="@+id/bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Bank"
+            android:layout_margin="@dimen/hintPadding"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paymentmethod"  />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bank">
+
+            <RadioGroup
+                android:id="@+id/bank_method_rg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/btnTxtSize"
+                android:orientation="vertical"
+                android:theme="@style/MyRadioButton">
+
+                <RadioButton
+                    android:id="@+id/rb_pbb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Public Bank"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_mbb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/bank_method_rg" />
+
+                <RadioButton
+                    android:id="@+id/rb_mbb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maybank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_cimb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_pbb" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_cimb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="CIMB Bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_hlb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_mbb" />
+
+                <RadioButton
+                    android:id="@+id/rb_bsn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Bank Simpanan Bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_affin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_hlb" />
+
+                <RadioButton
+                    android:id="@+id/rb_affin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Affin Bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_ambank"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_bsn" />
+
+                <RadioButton
+                    android:id="@+id/rb_ambank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="AmBank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_hsbc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_affin" />
+
+                <RadioButton
+                    android:id="@+id/rb_hsbc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HSBC Bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_rhb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_ambank" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_rhb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RHB"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_uob"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_hsbc" />
+
+                <RadioButton
+                    android:id="@+id/rb_uob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UOB"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_sc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_rhb" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_sc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Standard Chartered Bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_agro"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_uob" />
+
+                <RadioButton
+                    android:id="@+id/rb_agro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AgroBank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_ocbc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_sc" />
+
+                <RadioButton
+                    android:id="@+id/rb_ocbc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OCBC Bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_mutmalat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_agro" />
+
+                <RadioButton
+                    android:id="@+id/rb_mutmalat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bank Mutmalat"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/rb_alliance"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_ocbc" />
+
+                <RadioButton
+                    android:id="@+id/rb_alliance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alliance Bank"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/btnTxtSize"
+                    app:layout_constraintBottom_toTopOf="@+id/tvResult"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rb_mutmalat" />
+
+
+            </RadioGroup>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/txtSize"
+            android:padding="@dimen/hintPadding"
+            android:textColor="@color/theme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"/>
+
+        <Button
+            android:id="@+id/savebtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/btnDone"
+            android:backgroundTint="@color/btnDone"
+            android:padding="10dp"
+            android:text="Pay Now"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvResult" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--this the navigation view which draws
+    and shows the navigation drawer-->
+    <!--include the menu created in the menu folder-->
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/navView"
+        app:menu="@menu/navigation_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

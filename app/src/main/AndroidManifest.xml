@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ohxinli">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/restep_trans_ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/restep_trans_ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Ohxinli">
+
+        <activity
+            android:name=".createnew_p1"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!--        User Profile Management-->
+        <activity
+            android:name=".create_user"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".EditUser"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".usermain"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".forgetPassword"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".resetPassword"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!--        Rehab Profile Management-->
+        <activity
+            android:name=".create_rehab"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".editRehab"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".rehabmain"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!--        Treatment-->
+        <activity
+            android:name=".addTreatment"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".treatmentlist"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat"/>
+        <activity
+            android:name=".editTreatment"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!--        Booking Request-->
+        <activity
+            android:name=".booking_request"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+
+        <activity
+            android:name=".schedule"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!--        User booking-->
+        <activity
+            android:name=".booking"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".verifyBooking"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".myBooking"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".viewBookingDetails"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".cancelBooking"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!--        Payment-related-->
+        <activity
+            android:name=".payment"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".paymentCard"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".paymentBank"
+            android:theme="@style/Theme.AppCompat" />
+
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".login"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

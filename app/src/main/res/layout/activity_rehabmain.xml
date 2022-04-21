@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".rehabmain">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="88dp"
+            android:src="@drawable/restep_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/detailtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="177dp"
+            android:text="@string/re_step"
+            android:textColor="@color/theme"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+        <TextView
+            android:id="@+id/page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="177dp"
+            android:text="Menu"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+        <TableLayout
+            android:layout_width="409dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/page">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+
+                <ImageButton
+
+                    android:id="@+id/b1"
+                    android:layout_width="50dp"
+                    android:layout_height="140dp"
+
+
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/buttonMain"
+                    android:scaleType="fitCenter"
+                    app:cornerRadius="30px"
+                    app:srcCompat="@drawable/iconm1" />
+
+                <ImageButton
+                    android:id="@+id/b2"
+                    android:layout_width="50dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:backgroundTint="@color/buttonMain"
+                    app:srcCompat="@drawable/iconm2"
+                    app:cornerRadius="30px" />
+
+
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"    >
+
+                <ImageButton
+                    android:id="@+id/b3"
+                    android:scaleType="fitCenter"
+                    android:layout_width="50dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/buttonMain"
+                    app:srcCompat="@drawable/iconm3"
+                    app:cornerRadius="30px" />
+
+
+                <ImageButton
+                    android:id="@+id/b4"
+                    android:layout_width="50dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/buttonMain"
+                    app:srcCompat="@drawable/iconm4"
+                    app:cornerRadius="30px" />
+
+            </TableRow>
+
+        </TableLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

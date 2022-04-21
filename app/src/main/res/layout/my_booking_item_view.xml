@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/page">
+
+        <LinearLayout
+            android:layout_width="223dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Appointment"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/rehabName" />
+
+            <TextView
+                android:id="@+id/txtTreatmentPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="@dimen/rehabdata" />
+
+            <TextView
+                android:id="@+id/txtRehabDate"
+                android:layout_width="224dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="@dimen/rehabdata" />
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="@dimen/rehabdata" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="118dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Status"
+                android:textAlignment="center"
+                android:textColor="@color/theme"
+                android:textSize="12dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/column_design"
+                android:backgroundTint='@color/btnDone'
+                android:gravity="center_vertical|right"
+                android:text="View"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

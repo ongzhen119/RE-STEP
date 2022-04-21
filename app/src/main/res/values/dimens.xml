@@ -1,0 +1,20 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fragment_horizontal_margin">16dp</dimen>
+    <dimen name="fragment_vertical_margin">16dp</dimen>
+    <dimen name="btnWidth">200dp</dimen>
+    <dimen name="btnHeight">45dp</dimen>
+    <dimen name="txtSize">20dp</dimen>
+    <dimen name="rehabdata">16dp</dimen>
+    <dimen name="rehabName">18dp</dimen>
+    <dimen name="txtSizeGuidance">16dp</dimen>
+    <dimen name="hintPadding">10dp</dimen>
+    <dimen name="btnTxtSize">18dp</dimen>
+    <dimen name="columnWidth">291dp</dimen>
+    <dimen name="columnheight">45dp</dimen>
+    <dimen name="margintop">60dp</dimen>
+    <dimen name="marginleft">10dp</dimen>
+    <dimen name="columncolumn">50dp</dimen>
+    <dimen name="titleFontSize">25dp</dimen>
+    <dimen name="logoTop">36dp</dimen>
+</resources>
