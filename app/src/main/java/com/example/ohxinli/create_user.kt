@@ -3,6 +3,7 @@ package com.example.ohxinli
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Color.WHITE
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +20,10 @@ import com.example.ohxinli.databinding.ActivityCreateUserBinding
 import com.example.ohxinli.databinding.ActivityMainBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import android.graphics.drawable.ColorDrawable
-
-
+import android.provider.MediaStore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.io.ByteArrayOutputStream
 
 
 class create_user<override> : AppCompatActivity() {
@@ -30,12 +33,13 @@ class create_user<override> : AppCompatActivity() {
 
     //creating constand keys for shared preferences
     val SHARED_PREFS = "shared_prefs"
-
+    var TAKE_IMAGE_CODE = 10001
     var icno: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setActionBar()
-        var preferences: SharedPreferences = this.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        var preferences: SharedPreferences =
+            this.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
 
         super.onCreate(savedInstanceState)
         binding = ActivityCreateUserBinding.inflate(layoutInflater)
@@ -57,11 +61,19 @@ class create_user<override> : AppCompatActivity() {
             val drug_duration = binding.yrs.text.toString()
             val user_email = binding.email.text.toString()
 
-            if(username.isEmpty() || name.isEmpty()|| phone_no.isEmpty() || ic_no.isEmpty() || user_email.isEmpty() || user_password.isEmpty() || drug_duration.isEmpty()){
-                Toast.makeText(applicationContext, "Please fill in all the required fields", Toast.LENGTH_SHORT).show()
-            }else if(user_password != confirmPassword){
-                Toast.makeText(applicationContext, "Confirm password is different from password", Toast.LENGTH_SHORT).show()
-            }else{
+            if (username.isEmpty() || name.isEmpty() || phone_no.isEmpty() || ic_no.isEmpty() || user_email.isEmpty() || user_password.isEmpty() || drug_duration.isEmpty()) {
+                Toast.makeText(
+                    applicationContext,
+                    "Please fill in all the required fields",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (user_password != confirmPassword) {
+                Toast.makeText(
+                    applicationContext,
+                    "Confirm password is different from password",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 val user = User(
                     ic_no,
                     drug_duration.toInt(),
@@ -91,9 +103,30 @@ class create_user<override> : AppCompatActivity() {
             }
 
         }
+        binding.imageView.setOnClickListener {
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE), TAKE_IMAGE_CODE)
+            }
+        }
     }
 
-    fun setActionBar(){
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == TAKE_IMAGE_CODE) {
+            when (resultCode) {
+                RESULT_OK -> {
+                    var bitmap:Bitmap = data!!.extras!!.get("data") as Bitmap
+                
+                    binding.imageView.setImageBitmap(bitmap)
+                    (bitmap)
+                }
+            }
+        }
+    }
+
+
+
+    fun setActionBar() {
         getSupportActionBar()?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
         getSupportActionBar()?.setCustomView(R.layout.abs_layout)
         supportActionBar!!.setDisplayShowCustomEnabled(true)

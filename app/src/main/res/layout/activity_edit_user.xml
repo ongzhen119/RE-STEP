@@ -9,25 +9,13 @@
     tools:context=".EditUser"
     tools:ignore="HardcodedText">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+        android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
-            android:text="Edit User"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.084"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
 
@@ -48,6 +36,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <!--            Username-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:id="@+id/imageViewProfilePic"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginBottom="17dp"
+                        android:src="@mipmap/ic_launcher"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="68dp"
+                        android:text="Edit User"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                       />
+                </LinearLayout>
                 <TextView
                     android:layout_width="291dp"
                     android:layout_height="25dp"
@@ -113,9 +126,9 @@
                     android:background="@drawable/column_design"
                     android:ems="10"
                     android:hint="Enter your Phone Number"
+                    android:inputType="number"
                     android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:inputType="number"
                     android:textSize="20dp" />
 
                 <!--               E-mail -->
@@ -162,9 +175,9 @@
                     android:background="@drawable/column_design"
                     android:ems="10"
                     android:hint="Enter your IC Number"
+                    android:inputType="number"
                     android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:inputType="number"
                     android:textSize="20dp" />
 
                 <!--               History -->
@@ -189,11 +202,10 @@
                         android:layout_marginTop="20dp"
                         android:background="@drawable/column_design"
                         android:ems="10"
-                        android:textSize="20dp"
                         android:hint="yy"
                         android:textColor="@color/black"
                         android:textColorHint="@color/hintColor"
-                        />
+                        android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="291dp"
@@ -207,6 +219,7 @@
                 </LinearLayout>
 
             </LinearLayout>
+
         </ScrollView>
 
         <Button
@@ -226,7 +239,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
 
     <!--this the navigation view which draws
     and shows the navigation drawer-->

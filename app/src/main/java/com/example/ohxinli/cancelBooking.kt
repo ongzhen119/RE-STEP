@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ohxinli.databinding.ActivityCancelBookingBinding
 import com.example.ohxinli.databinding.ActivityEditRehabBinding
 import com.example.ohxinli.databinding.ActivityViewBookingBinding
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 class cancelBooking : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
@@ -42,6 +46,7 @@ class cancelBooking : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         val bookingid = intent.getStringExtra("bookingid")
+        var regisno : String = ""
 
         db.collection("Booking").whereEqualTo("booking_id", bookingid).get()
             .addOnSuccessListener { doc ->
@@ -52,6 +57,22 @@ class cancelBooking : AppCompatActivity() {
                     binding.txtTime.text = document.get("booking_time").toString()
                 }
             }
+
+        db.collection("RehabCenter").whereEqualTo("company_name", binding.txtCompanyName.text).get()
+            .addOnSuccessListener { doc ->
+                for (document in doc) {
+                   regisno = document.get("regis_no").toString()
+                    Log.e("iwantsleep",regisno)
+                    val localFile = File.createTempFile("tempImage", "jpg")
+                    val storageRef = FirebaseStorage.getInstance().reference.child("rehabImages/$regisno.jpg")
+                    storageRef.getFile(localFile).addOnSuccessListener {
+                        val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                        binding.imageViewRehabCenter.setImageBitmap(bitmap)
+                    }
+                }
+            }
+
+
 
         //setting adapter
         val spinner: Spinner = binding.reasonSpinner

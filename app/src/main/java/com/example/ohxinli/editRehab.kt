@@ -1,12 +1,17 @@
 package com.example.ohxinli
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
@@ -18,6 +23,12 @@ import com.example.ohxinli.databinding.ActivityEditRehabBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import androidx.annotation.NonNull
 import androidx.appcompat.app.ActionBarDrawerToggle
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.io.ByteArrayOutputStream
+import java.io.File
 
 
 class editRehab : AppCompatActivity() {
@@ -27,15 +38,23 @@ class editRehab : AppCompatActivity() {
     //creating constand keys for shared preferences
     val SHARED_PREFS = "shared_prefs"
     var regisno: String? = null
+    var TAKE_IMAGE_CODE = 10001
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        var preferences: SharedPreferences = this.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        val preferences: SharedPreferences = this.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
 
         super.onCreate(savedInstanceState)
         binding = ActivityEditRehabBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         regisno = preferences.getString("regisno_key", null)
+        val localFile = File.createTempFile("tempImage", "jpg")
+        val storageRef = FirebaseStorage.getInstance().reference.child("rehabImages/$regisno.jpg")
+        storageRef.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+            binding.rehabImageView.setImageBitmap(bitmap)
+        }
+
 
         //display information
         displayInfo(regisno)
@@ -43,6 +62,11 @@ class editRehab : AppCompatActivity() {
         binding.savebtn.setOnClickListener{
             updateInfo()
             displayInfo(regisno)
+        }
+        binding.rehabImageView.setOnClickListener {
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE), TAKE_IMAGE_CODE)
+            }
         }
 
         val drawer: DrawerLayout = binding.drawerLayout
@@ -66,6 +90,48 @@ class editRehab : AppCompatActivity() {
             }
             .addOnFailureListener {
                 Log.e("Firestore", "Error Loading File: ${it.toString()}")
+            }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == TAKE_IMAGE_CODE) {
+            when (resultCode) {
+                RESULT_OK -> {
+                    val bitmap: Bitmap = data!!.extras!!.get("data") as Bitmap
+                    binding.rehabImageView.setImageBitmap(bitmap)
+                    handleUpload(bitmap)
+
+                }
+            }
+        }
+    }
+    private fun handleUpload(bitmap: Bitmap) {
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val reference = FirebaseStorage.getInstance().reference
+            .child("rehabImages")
+            .child("$regisno.jpg")
+        reference.putBytes(baos.toByteArray())
+            .addOnSuccessListener { getDownloadUrl(reference) }
+            .addOnFailureListener { e -> Log.e(ContentValues.TAG, "onFailure", e.cause) }
+    }
+    private fun getDownloadUrl(reference: StorageReference) {
+        reference.downloadUrl
+            .addOnSuccessListener { uri ->
+                Log.e(ContentValues.TAG, "onSuccess$uri")
+                setUserProfileUrl(uri)
+            }
+    }
+    private fun setUserProfileUrl(uri: Uri) {
+        val user = FirebaseAuth.getInstance().currentUser
+        val request = UserProfileChangeRequest.Builder()
+            .setPhotoUri(uri)
+            .build()
+        user!!.updateProfile(request)
+            .addOnSuccessListener { }
+            .addOnFailureListener {
+                //Toast.makeText(a.this, "Profile", Toast.LENGTH_SHORT).show();
             }
     }
 

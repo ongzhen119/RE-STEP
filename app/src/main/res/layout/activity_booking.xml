@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/txtRehabImg"
+            android:id="@+id/rehabImg"
             android:layout_width="match_parent"
             android:layout_height="151dp"
             app:srcCompat="@drawable/iconm1"

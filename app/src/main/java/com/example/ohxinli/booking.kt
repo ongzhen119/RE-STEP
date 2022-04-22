@@ -20,6 +20,7 @@ import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
@@ -28,6 +29,8 @@ import androidx.appcompat.app.ActionBar
 
 import java.text.SimpleDateFormat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 class booking: AppCompatActivity()  {
     private lateinit var db: FirebaseFirestore
@@ -55,8 +58,15 @@ class booking: AppCompatActivity()  {
         preferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
 
         icno = preferences.getString("icno_key", null)
+        
         val rehabRegisno = intent.getStringExtra("regisno_key") //get from intent
-
+        val regisno = preferences.getString("regisno_key", null)
+        val localFile = File.createTempFile("tempImage", "jpg")
+        val storageRef = FirebaseStorage.getInstance().reference.child("rehabImages/$regisno.jpg")
+        storageRef.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+            binding.rehabImg.setImageBitmap(bitmap)
+        }
         //display rehab information
         displayRehab(rehabRegisno)
 

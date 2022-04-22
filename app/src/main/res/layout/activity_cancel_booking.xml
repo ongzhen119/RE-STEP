@@ -41,7 +41,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageViewRehabCenter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -118,7 +118,7 @@
             android:textColor="@color/black"
             android:layout_margin="@dimen/hintPadding"
             android:textSize="@dimen/rehabdata"
-            android:background="@drawable/column_design"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />

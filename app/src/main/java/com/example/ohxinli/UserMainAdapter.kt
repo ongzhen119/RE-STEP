@@ -1,10 +1,14 @@
 package com.example.ohxinli
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 
 class UserMainAdapter(private var rehabList: ArrayList<RehabCenter2>) : RecyclerView.Adapter<UserMainAdapter.ViewHolder>(){
@@ -28,6 +32,7 @@ class UserMainAdapter(private var rehabList: ArrayList<RehabCenter2>) : Recycler
         val website : TextView = view.findViewById(R.id.website)
         val phoneNum : TextView = view.findViewById(R.id.phoneNum)
 
+        val imageView : ImageView = view.findViewById(R.id.rehabImageView)
         init {
             view.setOnClickListener {
                 listener.onItemClick(adapterPosition)
@@ -45,7 +50,14 @@ class UserMainAdapter(private var rehabList: ArrayList<RehabCenter2>) : Recycler
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var rehabCenter = rehabList[position]
+        val rehabCenter = rehabList[position]
+        val regisNo = rehabCenter.regis_no
+        val localFile = File.createTempFile("tempImage", "jpg")
+        val storageRef = FirebaseStorage.getInstance().reference.child("rehabImages/$regisNo.jpg")
+        storageRef.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+            holder.imageView.setImageBitmap(bitmap)
+        }
 
         holder.companyName.text = rehabCenter.company_name
         holder.address.text = rehabCenter.address
