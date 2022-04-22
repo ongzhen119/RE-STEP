@@ -75,6 +75,7 @@
                     android:id="@+id/txtcardHolder"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:singleLine="true"
                     android:layout_marginRight="20dp"
@@ -96,9 +97,11 @@
                     android:textSize="20dp" />
 
                 <EditText
+                    android:inputType="number"
                     android:id="@+id/txtCardNo"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:singleLine="true"
@@ -125,39 +128,30 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
                     android:orientation="horizontal">
 
-                    <EditText
+                    <NumberPicker
                         android:id="@+id/mm"
                         android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:ems="10"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/column_design"
-                        android:hint="MM"
-                        android:inputType="number"
+                        android:theme="@style/AppTheme.Picker"
+                        />
 
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:singleLine="true"
-                        android:textColorHint="@color/black"
-                        android:textSize="20dp" />
-
-                    <EditText
+                    <NumberPicker
                         android:id="@+id/yy"
-                        android:background="@drawable/column_design"
                         android:layout_width="135dp"
-                        android:inputType="number"
-                        android:layout_height="50dp"
-                        android:ems="10"
-                        android:hint="YY"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:singleLine="true"
-                        android:textColorHint="@color/black"
-                        android:textSize="20dp" />
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/column_design"
+                        android:theme="@style/AppTheme.Picker"
+                        />
+
 
                 </LinearLayout>
 
@@ -175,6 +169,7 @@
                     android:id="@+id/cvv"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/column_design"
@@ -188,11 +183,11 @@
 
             </LinearLayout>
         </ScrollView>
+
         <CheckBox
             android:layout_margin="@dimen/hintPadding"
             android:theme="@style/MyRadioButton"
             android:id="@+id/savecc"
-            android:onClick="saveccChecked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -202,7 +197,23 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/scrollView"
             tools:layout_editor_absoluteY="1104dp"
-            tools:ignore="OnClick" />
+            />
+
+        <CheckBox
+            android:layout_margin="@dimen/hintPadding"
+            android:theme="@style/MyRadioButton"
+            android:id="@+id/editcc"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Update Card Details"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/savecc"
+            tools:layout_editor_absoluteY="1104dp"
+            />
 
 
         <Button
@@ -220,7 +231,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/savecc"
+            app:layout_constraintTop_toBottomOf="@+id/editcc"
             tools:layout_editor_absoluteY="1104dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
